@@ -52,7 +52,7 @@ public class RailSystem {
             throw new IllegalArgumentException("输入的地点有误");
         }
 
-        // 重写比较器，通过里程比较
+        // 重写比较器，通过费用比较
         Comparator<City> distanceComparator = (o1, o2) -> Integer.compare(o1.getTotal_fee() - o2.getTotal_fee(), 0);
 
         PriorityQueue<City> candidate = new PriorityQueue<>(55, distanceComparator);
@@ -121,10 +121,15 @@ public class RailSystem {
             Scanner sc = new Scanner(System.in);
             String start = sc.next();// 起始城市
             if (start.equals("quit")) {
+                System.out.println("Service is over");
                 sc.close();// 会关闭System.in
                 return;
             }
             String destination = sc.next();// 目标城市
+            if (start.equals(destination)) {
+                System.out.println("The starting city and the ending city can not be the same\nPlease retry");
+                continue;
+            }
 
             Pair<Integer, Integer> res = rs.calc_route(start, destination);
 
