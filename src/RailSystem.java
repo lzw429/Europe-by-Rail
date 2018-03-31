@@ -10,7 +10,7 @@ public class RailSystem {
     private HashMap<String, City> cities;
 
     private void load_services() {
-        // TODO 读取services.txt
+        // 读取services.txt
         String line;
         BufferedReader reader;
         try {
@@ -38,7 +38,7 @@ public class RailSystem {
     }
 
     private void reset() {
-        //TODO 重置cities数据
+        // 重置cities数据
         for (Map.Entry<String, City> cityEntry : cities.entrySet()) {
             cityEntry.getValue().setFrom_city("");
             cityEntry.getValue().setTotal_distance(Integer.MAX_VALUE);
